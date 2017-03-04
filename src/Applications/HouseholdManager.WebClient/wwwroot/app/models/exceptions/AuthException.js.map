@@ -1,0 +1,1 @@
+{"version":3,"file":"AuthException.js","sourceRoot":"","sources":["AuthException.ts"],"names":[],"mappings":";AAAA,gCAA8B,iBAAiB,CAAC,CAAA;AAEhD,4BAAmC,6BAAa;IAC/C,YAAmB,SAAiB,EAAE,OAAgB;QACrD,MAAM,OAAO,CAAC,CAAC;QADG,cAAS,GAAT,SAAS,CAAQ;QAEnC,IAAI,CAAC,IAAI,GAAG,eAAe,CAAC;IAC7B,CAAC;AACF,CAAC;AALY,qBAAa,gBAKzB,CAAA"}

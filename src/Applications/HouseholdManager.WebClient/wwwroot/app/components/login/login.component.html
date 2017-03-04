@@ -1,0 +1,37 @@
+﻿<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+			<div class="row text-center">
+				<h2>Login</h2>
+			</div>
+			<div class="row">
+				<form name="form" (ngSubmit)="formControl.form.valid && login()" #formControl="ngForm" novalidate>
+					<div class="col-xs-12">
+						<div class="form-group" [ngClass]="{'has-success' : emailControl.valid && !emailControl.errors?.format, 'has-error' : formControl.submitted && (!emailControl.valid || emailControl.errors?.format)}">
+							<label for="email">Email</label>
+							<input type="text" class="form-control" name="email" [(ngModel)]="authRequest.email" #emailControl="ngModel" email required />
+							<div *ngIf="formControl.submitted && !emailControl.valid" class="help-block">Email is required</div>
+							<div *ngIf="formControl.submitted && emailControl.errors?.format" class="help-block">Email format is wrong</div>
+						</div>
+						<div class="form-group" [ngClass]="{'has-success' : passwordControl.valid, 'has-error' : formControl.submitted && !passwordControl.valid}">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" name="password" [(ngModel)]="authRequest.password" #passwordControl="ngModel" required />
+							<div *ngIf="formControl.submitted && !passwordControl.valid" class="help-block">Password is required</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4 col-xs-6">
+							<button [disabled]="loading" class="btn btn-primary btn-block">Login</button>
+						</div>
+						<div class="col-sm-4 col-sm-offset-4 col-xs-6">
+							<a [routerLink]="['/register']" class="btn btn-default btn-block">Register</a>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div *ngIf="loading" class="row text-center">
+				<img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+			</div>
+		</div>
+	</div>
+</div>

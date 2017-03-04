@@ -1,0 +1,29 @@
+﻿<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-header-main" aria-expanded="false" aria-controls="navbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" [routerLink]="['../dashboard']">{{appSettings.appTitle}}</a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar-header-main">
+			<ul class="nav navbar-nav">
+				<li [routerLinkActive]="['active']"><a [routerLink]="['plans']">Plans</a></li>
+				<li [routerLinkActive]="['active']"><a [routerLink]="['tasks']">Tasks</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{getUserName()}}<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#" (click)="authService.logout()">Logout</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid">
+	<router-outlet></router-outlet>
+</div>

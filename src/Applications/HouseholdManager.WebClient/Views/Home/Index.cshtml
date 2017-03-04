@@ -1,0 +1,40 @@
+﻿@using HouseholdManager.WebClient.Models
+@model ServicesConnectionSettings
+@{
+	ViewData["Title"] = "Everyday manager";
+}
+<main-page>Loading...</main-page>
+
+@section Scripts {
+	<environment names="Development">
+		<link rel="stylesheet" href="nodes/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="css/site.css">
+		<script src="nodes/jquery/jquery.js"></script>
+		<script src="nodes/bootstrap/js/bootstrap.js"></script>
+	</environment>
+	<environment names="Production">
+		<link rel="stylesheet" href="nodes/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/site.min.css">
+		<script src="nodes/jquery/jquery.min.js"></script>
+		<script src="nodes/bootstrap/js/bootstrap.min.js"></script>
+	</environment>
+	<script src="nodes/core-js/core.min.js"></script>
+	<script src="nodes/reflect-metadata/Reflect.js"></script>
+	<script src="nodes/systemjs/system.src.js"></script>
+	<script src="nodes/zone.js/zone.min.js"></script>
+	<script src="js/systemjs.config.js"></script>
+	<script>
+		System.import('app')
+        .then(function (module) {
+        	module.main({
+        		appTitle: "@ViewData["Title"]",
+        		servicesUrl: "@Model.Url"
+        	});
+        })
+        .catch(function (err) {
+        	console.error(err);
+        });
+
+		System.import('app').catch(function (err) { console.error(err); });
+	</script>
+}
