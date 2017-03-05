@@ -50,12 +50,11 @@ let AuthenticationService = class AuthenticationService {
         let loginInfo = JSON.parse(loginInfoEncoded);
         return loginInfo.token;
     }
-    getUserInfo() {
+    getLoginInfo() {
         let loginInfoEncoded = localStorage.getItem(this.loginInfoKey);
         if (!loginInfoEncoded)
             return null;
-        let loginInfo = JSON.parse(loginInfoEncoded);
-        return loginInfo.user;
+        return JSON.parse(loginInfoEncoded);
     }
 };
 AuthenticationService = __decorate([

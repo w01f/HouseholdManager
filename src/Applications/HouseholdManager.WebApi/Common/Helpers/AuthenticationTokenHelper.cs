@@ -17,7 +17,7 @@ namespace HouseholdManager.WebApi.Common.Helpers
 
 			var identity = new ClaimsIdentity(
 				new GenericIdentity(user.Email, "TokenAuth"),
-				new[] { new Claim("Id", user.Id.ToString()) }
+				new[] { new Claim("Id", user.UserId.ToString()) }
 			);
 
 			var securityToken = handler.CreateToken(new SecurityTokenDescriptor

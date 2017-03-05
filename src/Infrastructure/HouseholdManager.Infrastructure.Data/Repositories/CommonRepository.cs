@@ -9,8 +9,8 @@ namespace HouseholdManager.Infrastructure.Data.Repositories
 {
 	public class CommonRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
 	{
-		private readonly DataContext _context;
-		private readonly DbSet<TEntity> _entities;
+		protected readonly DataContext _context;
+		protected readonly DbSet<TEntity> _entities;
 
 		public CommonRepository(DataContext context)
 		{
@@ -18,17 +18,17 @@ namespace HouseholdManager.Infrastructure.Data.Repositories
 			_entities = context.Set<TEntity>();
 		}
 
-		public IEnumerable<TEntity> GetAll()
+		public virtual IEnumerable<TEntity> GetAll()
 		{
 			return _entities.AsEnumerable();
 		}
 
-		public TEntity Get(Int64 id)
+		public virtual TEntity Get(Int64 id)
 		{
 			return _entities.SingleOrDefault(s => s.Id == id);
 		}
 
-		public void Insert(TEntity entity)
+		public virtual void Insert(TEntity entity)
 		{
 			if (entity == null)
 				throw new ArgumentNullException("Passed entity is null");
@@ -36,20 +36,20 @@ namespace HouseholdManager.Infrastructure.Data.Repositories
 			SaveChanges();
 		}
 
-		public void Update(TEntity entity)
+		public virtual void Update(TEntity entity)
 		{
 			if (entity == null)
 				throw new ArgumentNullException("Passed entity is null");
 			SaveChanges();
 		}
 
-		public void Delete(TEntity entity)
+		public virtual void Delete(TEntity entity)
 		{
 			if (entity == null)
 				throw new ArgumentNullException("Passed entity is null");
 		}
 
-		public void Remove(TEntity entity)
+		public virtual void Remove(TEntity entity)
 		{
 			if (entity == null)
 				throw new ArgumentNullException("Passed entity is null");
@@ -57,7 +57,7 @@ namespace HouseholdManager.Infrastructure.Data.Repositories
 			SaveChanges();
 		}
 
-		public void SaveChanges()
+		public virtual void SaveChanges()
 		{
 			ProcessChangedEntities();
 			_context.SaveChanges();

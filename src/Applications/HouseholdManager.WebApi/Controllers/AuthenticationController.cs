@@ -10,8 +10,8 @@ namespace HouseholdManager.WebApi.Controllers
 {
 	[Route("api/[controller]")]
 	public class AuthenticationController : Controller
-    {
-	    private readonly IUserLoginService _userLoginService;
+	{
+		private readonly IUserLoginService _userLoginService;
 
 		public AuthenticationController(IUserLoginService userLoginService)
 		{
@@ -21,7 +21,7 @@ namespace HouseholdManager.WebApi.Controllers
 		[HttpPost("GetToken")]
 		public RequestResult GetToken([FromBody]AuthenticationRequest request)
 		{
-			var existUser = _userLoginService.GetUserByEmailAndPassword(request.Email,request.Password);
+			var existUser = _userLoginService.GetUserByEmailAndPassword(request.Email, request.Password);
 
 			if (existUser == null)
 				return new RequestResult
@@ -30,8 +30,7 @@ namespace HouseholdManager.WebApi.Controllers
 					Message = "Email or password is invalid"
 				};
 
-			var loginInfo = new LoginInfo();
-			loginInfo.User = UserInfo.FromUser(existUser);
+			var loginInfo = new LoginInfo { UserId = existUser.UserId };
 			var now = DateTime.Now;
 			var expiresIn = now + AuthTokenOption.ExpiresSpan;
 			loginInfo.Token = new TokenInfo

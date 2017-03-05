@@ -4,6 +4,7 @@ const alert_component_1 = require("./alert/alert.component");
 const login_component_1 = require('./login/login.component');
 const home_component_1 = require('./home/home.component');
 const dashboard_component_1 = require('./dashboard/dashboard.component');
+const user_profile_component_1 = require('./user-profile/user-profile.component');
 const plans_component_1 = require('./plans/plans.component');
 const tasks_component_1 = require('./tasks/tasks.component');
 exports.allComponents = [
@@ -12,6 +13,7 @@ exports.allComponents = [
     login_component_1.LoginComponent,
     home_component_1.HomeComponent,
     dashboard_component_1.DashboardComponent,
+    user_profile_component_1.UserProfileComponent,
     plans_component_1.PlansComponent,
     tasks_component_1.TasksComponent
 ];

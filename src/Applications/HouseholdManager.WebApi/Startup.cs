@@ -1,6 +1,8 @@
-﻿using HouseholdManager.Domain.Core.Repositories;
+﻿using HouseholdManager.Domain.Core.Entities.Admin;
+using HouseholdManager.Domain.Core.Repositories;
 using HouseholdManager.Infrastructure.Business.Services.Tasks;
 using HouseholdManager.Infrastructure.Business.Services.UserLogin;
+using HouseholdManager.Infrastructure.Business.Services.UserProfile;
 using HouseholdManager.Infrastructure.Data;
 using HouseholdManager.Infrastructure.Data.Repositories;
 using HouseholdManager.WebApi.Common.Constants;
@@ -17,8 +19,8 @@ using Microsoft.Extensions.Logging;
 
 namespace HouseholdManager.WebApi
 {
-    public class Startup
-    {
+	public class Startup
+	{
 		public IConfigurationRoot Configuration { get; }
 
 		public Startup(IHostingEnvironment env)
@@ -38,6 +40,7 @@ namespace HouseholdManager.WebApi
 
 			services.AddScoped(typeof(IRepository<>), typeof(CommonRepository<>));
 			services.AddTransient<IUserLoginService, UserLoginService>();
+			services.AddTransient<IUserProfileService, UserProfileService>();
 			services.AddTransient<ITaskService, TaskService>();
 
 			services.AddAuthorization(auth =>

@@ -1,4 +1,4 @@
-﻿import { Component } from "@angular/core";
+﻿import { Component, OnInit } from "@angular/core";
 import { TasksService } from "../../services/tasks.service";
 import { ExceptionService } from "../../services/exception.service";
 import { Task } from "../../models/tasks/Task";
@@ -10,7 +10,7 @@ import { Task } from "../../models/tasks/Task";
 	providers: [TasksService]
 })
 
-export class TasksComponent {
+export class TasksComponent implements OnInit {
 	items: Task[] = [];
 
 	constructor(

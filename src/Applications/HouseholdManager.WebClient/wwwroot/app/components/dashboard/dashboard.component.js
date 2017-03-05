@@ -14,17 +14,20 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 const core_1 = require('@angular/core');
 const router_1 = require('@angular/router');
 const authentication_service_1 = require("../../services/authentication.service");
+const users_service_1 = require("../../services/users.service");
+const exception_service_1 = require("../../services/exception.service");
 let DashboardComponent = class DashboardComponent {
-    constructor(router, authService, appSettings) {
+    constructor(router, authService, usersService, exceptionService, appSettings) {
         this.router = router;
         this.authService = authService;
+        this.usersService = usersService;
+        this.exceptionService = exceptionService;
         this.appSettings = appSettings;
     }
-    getUserName() {
-        let userInfo = this.authService.getUserInfo();
-        if (userInfo == null)
-            return "";
-        return userInfo.firstName + " " + userInfo.lastName;
+    ngOnInit() {
+        this.usersService.getLoggedUserProfile()
+            .then(userProfile => this.userName = userProfile.firstName + ' ' + userProfile.lastName)
+            .catch(exception => { this.exceptionService.handleAppException(exception); });
     }
     logout() {
         this.authService.logout();
@@ -35,10 +38,11 @@ DashboardComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: "dashboard",
-        templateUrl: "dashboard.component.html"
+        templateUrl: "dashboard.component.html",
+        providers: [users_service_1.UsersService]
     }),
-    __param(2, core_1.Inject('AppSettings')), 
-    __metadata('design:paramtypes', [router_1.Router, authentication_service_1.AuthenticationService, Object])
+    __param(4, core_1.Inject('AppSettings')), 
+    __metadata('design:paramtypes', [router_1.Router, authentication_service_1.AuthenticationService, users_service_1.UsersService, exception_service_1.ExceptionService, Object])
 ], DashboardComponent);
 exports.DashboardComponent = DashboardComponent;
 //# sourceMappingURL=dashboard.component.js.map

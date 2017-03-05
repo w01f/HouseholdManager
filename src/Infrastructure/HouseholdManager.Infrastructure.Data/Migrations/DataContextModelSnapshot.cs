@@ -21,14 +21,33 @@ namespace HouseholdManager.Infrastructure.Data.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Birthday")
-                        .HasColumnType("datetime");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime");
 
                     b.Property<string>("Email")
                         .IsRequired();
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Password")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("HouseholdManager.Domain.Core.Entities.Admin.UserProfile", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Birthday")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime");
 
                     b.Property<string>("FirstName")
                         .IsRequired();
@@ -40,12 +59,22 @@ namespace HouseholdManager.Infrastructure.Data.Migrations
 
                     b.Property<string>("LastName");
 
-                    b.Property<string>("Password")
-                        .IsRequired();
+                    b.Property<long>("UserId");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("User_Profiles");
+                });
+
+            modelBuilder.Entity("HouseholdManager.Domain.Core.Entities.Admin.UserProfile", b =>
+                {
+                    b.HasOne("HouseholdManager.Domain.Core.Entities.Admin.User", "User")
+                        .WithOne("UserProfile")
+                        .HasForeignKey("HouseholdManager.Domain.Core.Entities.Admin.UserProfile", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

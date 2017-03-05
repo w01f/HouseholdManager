@@ -64,6 +64,10 @@ gulp.task('deploy:bootstrap', function () {
 	])
 		.pipe(gulp.dest(paths.nodeModulesDest + 'bootstrap'));
 });
+gulp.task('deploy:ng2-bs3-modal', function () {
+	gulp.src([paths.nodeModulesSrc + 'ng2-bs3-modal/bundles/**/*.js'])
+		.pipe(gulp.dest(paths.nodeModulesDest + 'ng2-bs3-modal'));
+});
 
 gulp.task('deploy-node-modules', [
     'deploy:core-js',
@@ -74,7 +78,8 @@ gulp.task('deploy-node-modules', [
     'deploy:angular-in-memory-web-api',
     'deploy:angular',
 	'deploy:jquery',
-	'deploy:bootstrap'
+	'deploy:bootstrap',
+	'deploy:ng2-bs3-modal'
 ]);
 
 paths.css = paths.webroot + "css/**/*.css";

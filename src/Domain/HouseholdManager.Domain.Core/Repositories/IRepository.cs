@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using HouseholdManager.Domain.Core.Entities;
 
 namespace HouseholdManager.Domain.Core.Repositories

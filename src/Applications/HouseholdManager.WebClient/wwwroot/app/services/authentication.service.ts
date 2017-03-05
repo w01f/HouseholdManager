@@ -6,7 +6,6 @@ import { RequestState } from "../models/common/RequestState";
 import { RequestResult } from "../models/common/RequestResult";
 import { LoginInfo } from "../models/auth/LoginInfo";
 import { TokenInfo } from "../models/auth/TokenInfo";
-import { UserInfo } from "../models/auth/UserInfo";
 import { AuthRequest } from "../models/auth/AuthRequest";
 
 @Injectable()
@@ -50,11 +49,10 @@ export class AuthenticationService {
 		return loginInfo.token;
 	}
 
-	public getUserInfo(): UserInfo {
+	public getLoginInfo(): LoginInfo {
 		let loginInfoEncoded = localStorage.getItem(this.loginInfoKey);
 		if (!loginInfoEncoded)
 			return null;
-		let loginInfo = JSON.parse(loginInfoEncoded) as LoginInfo;
-		return loginInfo.user;
+		return JSON.parse(loginInfoEncoded) as LoginInfo;
 	}
 }

@@ -12,6 +12,7 @@ const core_1 = require('@angular/core');
 const platform_browser_1 = require('@angular/platform-browser');
 const http_1 = require('@angular/http');
 const forms_1 = require('@angular/forms');
+const ng2_bs3_modal_1 = require('ng2-bs3-modal/ng2-bs3-modal');
 const app_component_1 = require('./components/app/app.component');
 const app_routing_1 = require('./app.routing');
 const _components_index_1 = require("./components/_components-index");
@@ -26,7 +27,8 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             http_1.HttpModule,
             forms_1.FormsModule,
-            app_routing_1.routing
+            app_routing_1.routing,
+            ng2_bs3_modal_1.Ng2Bs3ModalModule
         ],
         declarations: [
             _components_index_1.allComponents,

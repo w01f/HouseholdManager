@@ -1,8 +1,10 @@
-﻿namespace HouseholdManager.WebApi.Models.Authentication
+﻿using System;
+
+namespace HouseholdManager.WebApi.Models.Authentication
 {
 	class LoginInfo
 	{
-		public UserInfo User { get; set; }
+		public Int64 UserId { get; set; }
 		public TokenInfo Token { get; set; }
 	}
 }

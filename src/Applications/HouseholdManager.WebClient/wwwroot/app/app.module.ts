@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 import { AppComponent } from './components/app/app.component';
 import { routing } from './app.routing';
@@ -16,7 +17,8 @@ import { allGuards } from "./helpers/guards/_guards-index";
 		BrowserModule,
 		HttpModule,
 		FormsModule,
-		routing
+		routing,
+		Ng2Bs3ModalModule
 	],
 	declarations: [
 		allComponents,

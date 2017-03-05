@@ -6,12 +6,11 @@ namespace HouseholdManager.Infrastructure.Business.Models.UserLogin
 	{
 		public static UserLoginModel ToModel(this User source)
 		{
+			if (source == null) return null;
 			return new UserLoginModel
 			{
-				Id = source.Id,
-				FirstName = source.FirstName,
-				LastName = source.LastName,
-				Email = source.Email,
+				UserId = source.Id,
+				Email = source.Email
 			};
 		}
 	}
