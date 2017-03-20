@@ -8,43 +8,44 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-const Subject_1 = require('rxjs/Subject');
-let AlertService = class AlertService {
-    constructor(router) {
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var Subject_1 = require('rxjs/Subject');
+var AlertService = (function () {
+    function AlertService(router) {
+        var _this = this;
         this.router = router;
-        this.subject = new Subject_1.Subject();
+        this.mainWindowQueue = new Subject_1.Subject();
         this.keepAfterNavigationChange = false;
-        // clear alert message on route change
-        router.events.subscribe(event => {
+        router.events.subscribe(function (event) {
             if (event instanceof router_1.NavigationStart) {
-                if (this.keepAfterNavigationChange) {
-                    // only keep for a single location change
-                    this.keepAfterNavigationChange = false;
+                if (_this.keepAfterNavigationChange) {
+                    _this.keepAfterNavigationChange = false;
                 }
                 else {
-                    // clear alert
-                    this.subject.next();
+                    _this.mainWindowQueue.next();
                 }
             }
         });
     }
-    success(message, keepAfterNavigationChange = false) {
+    AlertService.prototype.success = function (message, keepAfterNavigationChange) {
+        if (keepAfterNavigationChange === void 0) { keepAfterNavigationChange = false; }
         this.keepAfterNavigationChange = keepAfterNavigationChange;
-        this.subject.next({ type: 'success', text: message });
-    }
-    error(message, keepAfterNavigationChange = false) {
+        this.mainWindowQueue.next({ type: 'success', text: message });
+    };
+    AlertService.prototype.error = function (message, keepAfterNavigationChange) {
+        if (keepAfterNavigationChange === void 0) { keepAfterNavigationChange = false; }
         this.keepAfterNavigationChange = keepAfterNavigationChange;
-        this.subject.next({ type: 'error', text: message });
-    }
-    getMessage() {
-        return this.subject.asObservable();
-    }
-};
-AlertService = __decorate([
-    core_1.Injectable(), 
-    __metadata('design:paramtypes', [router_1.Router])
-], AlertService);
+        this.mainWindowQueue.next({ type: 'error', text: message });
+    };
+    AlertService.prototype.getMessage = function () {
+        return this.mainWindowQueue.asObservable();
+    };
+    AlertService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [router_1.Router])
+    ], AlertService);
+    return AlertService;
+}());
 exports.AlertService = AlertService;
 //# sourceMappingURL=alert.service.js.map

@@ -1,18 +1,21 @@
 "use strict";
-const utils_1 = require("../common/utils");
-class EmailValidator {
+var utils_1 = require("../common/utils");
+var EmailValidator = (function () {
+    function EmailValidator() {
+    }
     // https://www.w3.org/TR/html5/forms.html#valid-e-mail-address
-    static createValidator() {
+    EmailValidator.createValidator = function () {
         return function validate(control) {
             if (!utils_1.Utils.isControlValuePresented(control))
                 return null;
-            let pattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+            var pattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
             if (pattern.test(control.value)) {
                 return null;
             }
             return { format: true };
         };
-    }
-}
+    };
+    return EmailValidator;
+}());
 exports.EmailValidator = EmailValidator;
 //# sourceMappingURL=email-validator.js.map

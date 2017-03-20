@@ -11,7 +11,7 @@ import { Task } from "../../models/tasks/Task";
 })
 
 export class TasksComponent implements OnInit {
-	items: Task[] = [];
+	private items: Task[] = [];
 
 	constructor(
 		private dataService: TasksService,

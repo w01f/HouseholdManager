@@ -1,0 +1,23 @@
+﻿<modal #modalDialog (onClose)="this.onClose.emit($event);">
+	<modal-header [show-close]="true">
+		<h4 class="modal-title">{{componentTitle}}</h4>
+	</modal-header>
+	<modal-body>
+		<div #target></div>
+		<div *ngIf="dialogResult" [ngClass]="{ 'alert': dialogResult, 'alert-success': dialogResult.type === 'success', 'alert-danger': dialogResult.type === 'error' }">
+			<ul>
+				<li *ngFor="let item of dialogResult.text">
+					{{ item }}
+				</li>
+			</ul>
+		</div>
+	</modal-body>
+	<modal-footer>
+		<div class="col-sm-5 col-xs-6 text-left">
+			<button type="button" class="btn btn-default btn-block" (click)="save()">Apply</button>
+		</div>
+		<div class="col-sm-5 col-sm-offset-2 col-xs-6 text-right">
+			<button type="button" class="btn btn-default btn-block" data-dismiss="modalDialog" (click)="modalDialog.dismiss()">Cancel</button>
+		</div>
+	</modal-footer>
+</modal>

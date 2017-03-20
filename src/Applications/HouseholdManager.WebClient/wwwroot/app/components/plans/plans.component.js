@@ -8,16 +8,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require("@angular/core");
-let PlansComponent = class PlansComponent {
-};
-PlansComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        selector: "plans-page",
-        templateUrl: "plans.component.html"
-    }), 
-    __metadata('design:paramtypes', [])
-], PlansComponent);
+var core_1 = require("@angular/core");
+var PlansComponent = (function () {
+    function PlansComponent() {
+    }
+    PlansComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: "plans-page",
+            templateUrl: "plans.component.html"
+        }), 
+        __metadata('design:paramtypes', [])
+    ], PlansComponent);
+    return PlansComponent;
+}());
 exports.PlansComponent = PlansComponent;
 //# sourceMappingURL=plans.component.js.map

@@ -11,38 +11,52 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-const authentication_service_1 = require("../../services/authentication.service");
-const users_service_1 = require("../../services/users.service");
-const exception_service_1 = require("../../services/exception.service");
-let DashboardComponent = class DashboardComponent {
-    constructor(router, authService, usersService, exceptionService, appSettings) {
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var authentication_service_1 = require("../../services/authentication.service");
+var users_service_1 = require("../../services/users.service");
+var exception_service_1 = require("../../services/exception.service");
+var modal_dialog_component_1 = require("../../helpers/ui-controls/modal-dialog.component");
+var user_profile_component_1 = require("../user-profile/user-profile.component");
+var DashboardComponent = (function () {
+    function DashboardComponent(router, authService, usersService, exceptionService, appSettings) {
         this.router = router;
         this.authService = authService;
         this.usersService = usersService;
         this.exceptionService = exceptionService;
         this.appSettings = appSettings;
     }
-    ngOnInit() {
-        this.usersService.getLoggedUserProfile()
-            .then(userProfile => this.userName = userProfile.firstName + ' ' + userProfile.lastName)
-            .catch(exception => { this.exceptionService.handleAppException(exception); });
-    }
-    logout() {
+    DashboardComponent.prototype.ngOnInit = function () {
+        this.loadUserInfo();
+    };
+    DashboardComponent.prototype.logout = function () {
         this.authService.logout();
         this.router.navigate(['/home']);
-    }
-};
-DashboardComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        selector: "dashboard",
-        templateUrl: "dashboard.component.html",
-        providers: [users_service_1.UsersService]
-    }),
-    __param(4, core_1.Inject('AppSettings')), 
-    __metadata('design:paramtypes', [router_1.Router, authentication_service_1.AuthenticationService, users_service_1.UsersService, exception_service_1.ExceptionService, Object])
-], DashboardComponent);
+    };
+    DashboardComponent.prototype.editUserProfile = function () {
+        this.modalDialog.open(user_profile_component_1.UserProfileComponent);
+    };
+    DashboardComponent.prototype.loadUserInfo = function () {
+        var _this = this;
+        this.usersService.getLoggedUserProfile()
+            .then(function (userProfile) { return _this.userName = userProfile.firstName + ' ' + userProfile.lastName; })
+            .catch(function (exception) { _this.exceptionService.handleAppException(exception); });
+    };
+    __decorate([
+        core_1.ViewChild('modalDialog'), 
+        __metadata('design:type', modal_dialog_component_1.ModalDialogComponent)
+    ], DashboardComponent.prototype, "modalDialog", void 0);
+    DashboardComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: "dashboard",
+            templateUrl: "dashboard.component.html",
+            providers: [users_service_1.UsersService]
+        }),
+        __param(4, core_1.Inject('AppSettings')), 
+        __metadata('design:paramtypes', [router_1.Router, authentication_service_1.AuthenticationService, users_service_1.UsersService, exception_service_1.ExceptionService, Object])
+    ], DashboardComponent);
+    return DashboardComponent;
+}());
 exports.DashboardComponent = DashboardComponent;
 //# sourceMappingURL=dashboard.component.js.map

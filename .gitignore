@@ -241,3 +241,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /src/Applications/HouseholdManager.WebClient/wwwroot/nodes/ng2-bs3-modal
+nodes

@@ -1,5 +1,8 @@
 "use strict";
-class AuthRequest {
-}
+var AuthRequest = (function () {
+    function AuthRequest() {
+    }
+    return AuthRequest;
+}());
 exports.AuthRequest = AuthRequest;
 //# sourceMappingURL=AuthRequest.js.map

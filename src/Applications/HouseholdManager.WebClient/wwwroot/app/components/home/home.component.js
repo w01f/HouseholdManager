@@ -11,26 +11,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-let HomeComponent = class HomeComponent {
-    constructor(router, appSettings) {
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var HomeComponent = (function () {
+    function HomeComponent(router, appSettings) {
         this.router = router;
         this.appSettings = appSettings;
     }
-    openApplication() {
+    HomeComponent.prototype.openApplication = function () {
         this.router.navigate(['/dashboard']);
-    }
-};
-HomeComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        selector: "home",
-        templateUrl: "home.component.html",
-        styleUrls: ["home.component.css"]
-    }),
-    __param(1, core_1.Inject('AppSettings')), 
-    __metadata('design:paramtypes', [router_1.Router, Object])
-], HomeComponent);
+    };
+    HomeComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: "home",
+            templateUrl: "home.component.html",
+            styleUrls: ["home.component.css"]
+        }),
+        __param(1, core_1.Inject('AppSettings')), 
+        __metadata('design:paramtypes', [router_1.Router, Object])
+    ], HomeComponent);
+    return HomeComponent;
+}());
 exports.HomeComponent = HomeComponent;
 //# sourceMappingURL=home.component.js.map

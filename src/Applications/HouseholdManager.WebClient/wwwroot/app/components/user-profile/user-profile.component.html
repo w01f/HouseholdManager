@@ -1,9 +1,51 @@
-﻿<modal #modalDialog>
-	<modal-header [show-close]="true">
-		<h4 class="modal-title">I'm a modal!</h4>
-	</modal-header>
-	<modal-body>
-		Hello World!
-	</modal-body>
-	<modal-footer [show-default-buttons]="true"></modal-footer>
-</modal>
+﻿<form class="form-horizontal" name="form" #formControl="ngForm" (ngSubmit)="formControl.form.valid && saveData()" novalidate>
+	<div class="form-group">
+		<label for="edit-profile-email" class="col-sm-3 col-xs-12 control-label">Email</label>
+		<div class="col-sm-9 col-xs-12">
+			<input name="edit-profile-email" type="text" class="form-control" id="edit-profile-email" [value]="originalUserProfile.email" disabled />
+		</div>
+	</div>
+	<div class="form-group" [ngClass]="{'has-success' : formControl.submitted && !firstNameControl.pristine && firstNameControl.valid, 'has-error' : formControl.submitted && !firstNameControl.valid}">
+		<label for="edit-profile-first-name" class="col-sm-3 col-xs-12 control-label">First Name</label>
+		<div class="col-sm-9 col-xs-12">
+			<input name="edit-profile-first-name" type="text" class="form-control" id="edit-profile-first-name" [(ngModel)]="editedUserProfile.firstName" #firstNameControl="ngModel" required>
+			<div *ngIf="formControl.submitted && !firstNameControl.valid" class="help-block">First Name is required</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="edit-profile-last-name" class="col-sm-3 col-xs-12 control-label">Last Name</label>
+		<div class="col-sm-9 col-xs-12">
+			<input name="edit-profile-last-name" type="text" class="form-control" id="edit-profile-last-name" [(ngModel)]="editedUserProfile.lastName">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-3 col-xs-12 control-label">Gender</label>
+		<div class="col-sm-9 col-xs-12">
+			<label class="radio-inline">
+				<input type="radio" name="edit-profile-gender" [(ngModel)]="editedUserProfile.gender" [value]="genderTypes.Male"> Male
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="edit-profile-gender" [(ngModel)]="editedUserProfile.gender" [value]="genderTypes.Female"> Female
+			</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="edit-profile-birthday" class="col-sm-3 col-xs-12 control-label">Birthday</label>
+		<div class="col-sm-6 col-xs-12">
+			<datepicker name="edit-profile-birthday" id="edit-profile-birthday" [(ngModel)]="editedUserProfile.birthday"></datepicker>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="edit-profile-password-original" class="col-sm-3 col-xs-12 control-label">Password</label>
+		<div class="col-sm-9 col-xs-12">
+			<input type="password" class="form-control" name="edit-profile-password-original" id="edit-profile-password-original" [(ngModel)]="editedUserProfile.passwordOriginal" #passwordOriginalControl="ngModel" (input)="passwordConfirmControl.control.updateValueAndValidity();" />
+		</div>
+	</div>
+	<div class="form-group" [ngClass]="{'has-success' : formControl.submitted && !passwordConfirmControl.pristine && passwordConfirmControl.valid, 'has-error' : formControl.submitted && !passwordConfirmControl.valid}">
+		<label for="edit-profile-password-confirm" class="col-sm-3 col-xs-12 control-label">Retype Password</label>
+		<div class="col-sm-9 col-xs-12">
+			<input type="password" class="form-control" name="edit-profile-password-confirm" id="edit-profile-password-confirm" [(ngModel)]="editedUserProfile.passwordConfirm" #passwordConfirmControl="ngModel" validateEqual="edit-profile-password-original" />
+			<div *ngIf="formControl.submitted && !passwordConfirmControl.valid" class="help-block">Password mismatch</div>
+		</div>
+	</div>
+</form>

@@ -8,24 +8,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-const authentication_service_1 = require("../../services/authentication.service");
-let HomeGuard = class HomeGuard {
-    constructor(router, authenticationService) {
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var authentication_service_1 = require("../../services/authentication.service");
+var HomeGuard = (function () {
+    function HomeGuard(router, authenticationService) {
         this.router = router;
         this.authenticationService = authenticationService;
     }
-    canActivate() {
+    HomeGuard.prototype.canActivate = function () {
         if (!this.authenticationService.checkLogin())
             return true;
         this.router.navigate(['/dashboard']);
         return false;
-    }
-};
-HomeGuard = __decorate([
-    core_1.Injectable(), 
-    __metadata('design:paramtypes', [router_1.Router, authentication_service_1.AuthenticationService])
-], HomeGuard);
+    };
+    HomeGuard = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [router_1.Router, authentication_service_1.AuthenticationService])
+    ], HomeGuard);
+    return HomeGuard;
+}());
 exports.HomeGuard = HomeGuard;
 //# sourceMappingURL=home.guard.js.map

@@ -12,50 +12,53 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 require("rxjs/add/operator/toPromise");
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-const http_1 = require("@angular/http");
-const authentication_service_1 = require("./authentication.service");
-const exception_service_1 = require("./exception.service");
-let AuthenticatedHttpService = class AuthenticatedHttpService {
-    constructor(router, http, authService, exceptionService, appSettings) {
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var http_1 = require("@angular/http");
+var authentication_service_1 = require("./authentication.service");
+var exception_service_1 = require("./exception.service");
+var AuthenticatedHttpService = (function () {
+    function AuthenticatedHttpService(router, http, authService, exceptionService, appSettings) {
         this.router = router;
         this.http = http;
         this.authService = authService;
         this.exceptionService = exceptionService;
         this.appSettings = appSettings;
     }
-    authorizedPost(url, body) {
-        let headers = this.initAuthHeaders();
+    AuthenticatedHttpService.prototype.authorizedPost = function (url, body) {
+        var _this = this;
+        var headers = this.initAuthHeaders();
         return this.http.post(this.appSettings.servicesUrl + url, body, { headers: headers }).toPromise()
-            .then(response => {
-            let requestResult = response.json();
+            .then(function (response) {
+            var requestResult = response.json();
             return requestResult;
         })
-            .catch(exception => { this.exceptionService.handleAppException(exception); });
-    }
-    authorizedGet(url) {
-        let headers = this.initAuthHeaders();
+            .catch(function (exception) { _this.exceptionService.handleAppException(exception); });
+    };
+    AuthenticatedHttpService.prototype.authorizedGet = function (url) {
+        var _this = this;
+        var headers = this.initAuthHeaders();
         return this.http.get(this.appSettings.servicesUrl + url, { headers: headers }).toPromise()
-            .then(response => {
-            let requestResult = response.json();
+            .then(function (response) {
+            var requestResult = response.json();
             return requestResult;
         })
-            .catch(exception => { this.exceptionService.handleAppException(exception); });
-    }
-    initAuthHeaders() {
-        let token = this.authService.getLocalToken();
+            .catch(function (exception) { _this.exceptionService.handleAppException(exception); });
+    };
+    AuthenticatedHttpService.prototype.initAuthHeaders = function () {
+        var token = this.authService.getLocalToken();
         if (token == null)
             throw "No token";
         var headers = new http_1.Headers();
         headers.append("Authorization", "Bearer " + token.data);
         return headers;
-    }
-};
-AuthenticatedHttpService = __decorate([
-    core_1.Injectable(),
-    __param(4, core_1.Inject('AppSettings')), 
-    __metadata('design:paramtypes', [router_1.Router, http_1.Http, authentication_service_1.AuthenticationService, exception_service_1.ExceptionService, Object])
-], AuthenticatedHttpService);
+    };
+    AuthenticatedHttpService = __decorate([
+        core_1.Injectable(),
+        __param(4, core_1.Inject('AppSettings')), 
+        __metadata('design:paramtypes', [router_1.Router, http_1.Http, authentication_service_1.AuthenticationService, exception_service_1.ExceptionService, Object])
+    ], AuthenticatedHttpService);
+    return AuthenticatedHttpService;
+}());
 exports.AuthenticatedHttpService = AuthenticatedHttpService;
 //# sourceMappingURL=authenticated-http.service.js.map

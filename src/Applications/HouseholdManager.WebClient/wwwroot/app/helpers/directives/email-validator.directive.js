@@ -8,28 +8,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const forms_1 = require('@angular/forms');
-const email_validator_1 = require('../validators/email-validator');
-let EmailValidatorDirective_1 = class EmailValidatorDirective {
-    ngOnInit() {
+var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
+var email_validator_1 = require('../validators/email-validator');
+var EmailValidatorDirective = (function () {
+    function EmailValidatorDirective() {
+    }
+    EmailValidatorDirective.prototype.ngOnInit = function () {
         this.validatorFunction = email_validator_1.EmailValidator.createValidator();
-    }
-    validate(control) {
+    };
+    EmailValidatorDirective.prototype.validate = function (control) {
         return this.validatorFunction(control);
-    }
-};
-let EmailValidatorDirective = EmailValidatorDirective_1;
-EmailValidatorDirective = EmailValidatorDirective_1 = __decorate([
-    core_1.Directive({
-        selector: '[email][formControlName],[email][formControl],[email][ngModel]',
-        providers: [{
-                provide: forms_1.NG_VALIDATORS,
-                useExisting: core_1.forwardRef(() => EmailValidatorDirective),
-                multi: true
-            }]
-    }), 
-    __metadata('design:paramtypes', [])
-], EmailValidatorDirective);
+    };
+    EmailValidatorDirective = __decorate([
+        core_1.Directive({
+            selector: '[email][formControlName],[email][formControl],[email][ngModel]',
+            providers: [{
+                    provide: forms_1.NG_VALIDATORS,
+                    useExisting: core_1.forwardRef(function () { return EmailValidatorDirective; }),
+                    multi: true
+                }]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], EmailValidatorDirective);
+    return EmailValidatorDirective;
+}());
 exports.EmailValidatorDirective = EmailValidatorDirective;
 //# sourceMappingURL=email-validator.directive.js.map

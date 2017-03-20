@@ -1,12 +1,12 @@
 "use strict";
-const app_component_1 = require('./app/app.component');
-const alert_component_1 = require("./alert/alert.component");
-const login_component_1 = require('./login/login.component');
-const home_component_1 = require('./home/home.component');
-const dashboard_component_1 = require('./dashboard/dashboard.component');
-const user_profile_component_1 = require('./user-profile/user-profile.component');
-const plans_component_1 = require('./plans/plans.component');
-const tasks_component_1 = require('./tasks/tasks.component');
+var app_component_1 = require('./app/app.component');
+var alert_component_1 = require("./alert/alert.component");
+var login_component_1 = require('./login/login.component');
+var home_component_1 = require('./home/home.component');
+var dashboard_component_1 = require('./dashboard/dashboard.component');
+var user_profile_component_1 = require('./user-profile/user-profile.component');
+var plans_component_1 = require('./plans/plans.component');
+var tasks_component_1 = require('./tasks/tasks.component');
 exports.allComponents = [
     app_component_1.AppComponent,
     alert_component_1.AlertComponent,

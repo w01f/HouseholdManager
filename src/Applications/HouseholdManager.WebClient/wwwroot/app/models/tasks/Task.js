@@ -1,5 +1,8 @@
 "use strict";
-class Task {
-}
+var Task = (function () {
+    function Task() {
+    }
+    return Task;
+}());
 exports.Task = Task;
 //# sourceMappingURL=Task.js.map

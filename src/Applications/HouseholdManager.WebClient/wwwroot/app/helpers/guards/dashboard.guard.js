@@ -8,27 +8,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-const authentication_service_1 = require("../../services/authentication.service");
-let DashboardGuard = class DashboardGuard {
-    constructor(router, authenticationService) {
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var authentication_service_1 = require("../../services/authentication.service");
+var DashboardGuard = (function () {
+    function DashboardGuard(router, authenticationService) {
         this.router = router;
         this.authenticationService = authenticationService;
     }
-    canActivate(route, state) {
+    DashboardGuard.prototype.canActivate = function (route, state) {
         if (this.authenticationService.checkLogin())
             return true;
         this.router.navigate(['/login', { returnUrl: state.url }]);
         return false;
-    }
-    canActivateChild(route, state) {
+    };
+    DashboardGuard.prototype.canActivateChild = function (route, state) {
         return this.canActivate(route, state);
-    }
-};
-DashboardGuard = __decorate([
-    core_1.Injectable(), 
-    __metadata('design:paramtypes', [router_1.Router, authentication_service_1.AuthenticationService])
-], DashboardGuard);
+    };
+    DashboardGuard = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [router_1.Router, authentication_service_1.AuthenticationService])
+    ], DashboardGuard);
+    return DashboardGuard;
+}());
 exports.DashboardGuard = DashboardGuard;
 //# sourceMappingURL=dashboard.guard.js.map

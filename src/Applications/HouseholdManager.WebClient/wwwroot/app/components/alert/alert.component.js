@@ -8,23 +8,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const alert_service_1 = require("../../services/alert.service");
-let AlertComponent = class AlertComponent {
-    constructor(alertService) {
+var core_1 = require('@angular/core');
+var alert_service_1 = require("../../services/alert.service");
+var AlertComponent = (function () {
+    function AlertComponent(alertService) {
         this.alertService = alertService;
     }
-    ngOnInit() {
-        this.alertService.getMessage().subscribe(message => { this.message = message; });
-    }
-};
-AlertComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        selector: 'alert',
-        templateUrl: "alert.component.html"
-    }), 
-    __metadata('design:paramtypes', [alert_service_1.AlertService])
-], AlertComponent);
+    AlertComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.alertService.getMessage().subscribe(function (message) { _this.message = message; });
+    };
+    AlertComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'alert',
+            templateUrl: "alert.component.html"
+        }), 
+        __metadata('design:paramtypes', [alert_service_1.AlertService])
+    ], AlertComponent);
+    return AlertComponent;
+}());
 exports.AlertComponent = AlertComponent;
 //# sourceMappingURL=alert.component.js.map

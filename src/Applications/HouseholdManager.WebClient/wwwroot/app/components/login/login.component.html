@@ -8,14 +8,14 @@
 				<form name="form" (ngSubmit)="formControl.form.valid && login()" #formControl="ngForm" novalidate>
 					<div class="col-xs-12">
 						<div class="form-group" [ngClass]="{'has-success' : emailControl.valid && !emailControl.errors?.format, 'has-error' : formControl.submitted && (!emailControl.valid || emailControl.errors?.format)}">
-							<label for="email">Email</label>
-							<input type="text" class="form-control" name="email" [(ngModel)]="authRequest.email" #emailControl="ngModel" email required />
+							<label for="login-dilog-email">Email</label>
+							<input type="text" class="form-control" name="login-dilog-email" id="login-dilog-email" [(ngModel)]="authRequest.email" #emailControl="ngModel" email required />
 							<div *ngIf="formControl.submitted && !emailControl.valid" class="help-block">Email is required</div>
 							<div *ngIf="formControl.submitted && emailControl.errors?.format" class="help-block">Email format is wrong</div>
 						</div>
 						<div class="form-group" [ngClass]="{'has-success' : passwordControl.valid, 'has-error' : formControl.submitted && !passwordControl.valid}">
-							<label for="password">Password</label>
-							<input type="password" class="form-control" name="password" [(ngModel)]="authRequest.password" #passwordControl="ngModel" required />
+							<label for="login-dilog-password">Password</label>
+							<input type="password" class="form-control" name="login-dilog-password" id="login-dilog-password" [(ngModel)]="authRequest.password" #passwordControl="ngModel" required />
 							<div *ngIf="formControl.submitted && !passwordControl.valid" class="help-block">Password is required</div>
 						</div>
 					</div>

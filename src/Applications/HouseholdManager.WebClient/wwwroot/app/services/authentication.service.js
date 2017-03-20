@@ -12,55 +12,57 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 require("rxjs/add/operator/toPromise");
-const core_1 = require('@angular/core');
-const http_1 = require("@angular/http");
-const exception_service_1 = require("./exception.service");
-const RequestState_1 = require("../models/common/RequestState");
-let AuthenticationService = class AuthenticationService {
-    constructor(http, exceptionService, appSettings) {
+var core_1 = require('@angular/core');
+var http_1 = require("@angular/http");
+var exception_service_1 = require("./exception.service");
+var RequestState_1 = require("../models/common/RequestState");
+var AuthenticationService = (function () {
+    function AuthenticationService(http, exceptionService, appSettings) {
         this.http = http;
         this.exceptionService = exceptionService;
         this.appSettings = appSettings;
         this.loginInfoKey = "loginInfo";
     }
-    login(authRequest) {
-        let url = this.appSettings.servicesUrl + "api/Authentication/GetToken";
-        let body = authRequest;
+    AuthenticationService.prototype.login = function (authRequest) {
+        var _this = this;
+        var url = this.appSettings.servicesUrl + "api/Authentication/GetToken";
+        var body = authRequest;
         return this.http.post(url, body)
             .toPromise()
-            .then(response => {
-            let result = response.json();
+            .then(function (response) {
+            var result = response.json();
             if (result.state === RequestState_1.RequestState.Success)
-                localStorage.setItem(this.loginInfoKey, JSON.stringify(result.data));
+                localStorage.setItem(_this.loginInfoKey, JSON.stringify(result.data));
             return result;
         })
-            .catch(exception => { this.exceptionService.handleAppException(exception); });
-    }
-    checkLogin() {
-        let loginInfo = localStorage.getItem(this.loginInfoKey);
+            .catch(function (exception) { _this.exceptionService.handleAppException(exception); });
+    };
+    AuthenticationService.prototype.checkLogin = function () {
+        var loginInfo = localStorage.getItem(this.loginInfoKey);
         return loginInfo != null;
-    }
-    logout() {
+    };
+    AuthenticationService.prototype.logout = function () {
         localStorage.removeItem(this.loginInfoKey);
-    }
-    getLocalToken() {
-        let loginInfoEncoded = localStorage.getItem(this.loginInfoKey);
+    };
+    AuthenticationService.prototype.getLocalToken = function () {
+        var loginInfoEncoded = localStorage.getItem(this.loginInfoKey);
         if (!loginInfoEncoded)
             return null;
-        let loginInfo = JSON.parse(loginInfoEncoded);
+        var loginInfo = JSON.parse(loginInfoEncoded);
         return loginInfo.token;
-    }
-    getLoginInfo() {
-        let loginInfoEncoded = localStorage.getItem(this.loginInfoKey);
+    };
+    AuthenticationService.prototype.getLoginInfo = function () {
+        var loginInfoEncoded = localStorage.getItem(this.loginInfoKey);
         if (!loginInfoEncoded)
             return null;
         return JSON.parse(loginInfoEncoded);
-    }
-};
-AuthenticationService = __decorate([
-    core_1.Injectable(),
-    __param(2, core_1.Inject('AppSettings')), 
-    __metadata('design:paramtypes', [http_1.Http, exception_service_1.ExceptionService, Object])
-], AuthenticationService);
+    };
+    AuthenticationService = __decorate([
+        core_1.Injectable(),
+        __param(2, core_1.Inject('AppSettings')), 
+        __metadata('design:paramtypes', [http_1.Http, exception_service_1.ExceptionService, Object])
+    ], AuthenticationService);
+    return AuthenticationService;
+}());
 exports.AuthenticationService = AuthenticationService;
 //# sourceMappingURL=authentication.service.js.map

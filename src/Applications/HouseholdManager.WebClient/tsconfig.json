@@ -10,8 +10,8 @@
 		"removeComments": false,
 		"sourceMap": true,
 		"strictNullChecks": false,
-		"target": "es6",
-		"lib": [ "dom", "es5" ],
+		"target": "es5",
+		"lib": [ "es6", "dom" ],
 		"typeRoots": [
 			"./node_modules/@types"
 		]

@@ -8,20 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-let RegisterComponent = class RegisterComponent {
-    ngOnInit() {
+var core_1 = require('@angular/core');
+var RegisterComponent = (function () {
+    function RegisterComponent() {
+    }
+    RegisterComponent.prototype.ngOnInit = function () {
         //this.authenticationService.logout();
         //this.returnUrl = this.route.snapshot.params['returnUrl'] || '/';
         //this.authRequest = new AuthRequest();
-    }
-};
-RegisterComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        templateUrl: "register.component.html"
-    }), 
-    __metadata('design:paramtypes', [])
-], RegisterComponent);
+    };
+    RegisterComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            templateUrl: "register.component.html"
+        }), 
+        __metadata('design:paramtypes', [])
+    ], RegisterComponent);
+    return RegisterComponent;
+}());
 exports.RegisterComponent = RegisterComponent;
 //# sourceMappingURL=register.component.js.map

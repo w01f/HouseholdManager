@@ -24,7 +24,7 @@ namespace HouseholdManager.WebApi.Common.Middleware
 					ValidateLifetime = true,
 					ClockSkew = TimeSpan.FromMinutes(0)
 				},
-				Events = new JwtBearerEvents()
+				Events = new JwtBearerEvents
 				{
 					OnAuthenticationFailed = context =>
 					{

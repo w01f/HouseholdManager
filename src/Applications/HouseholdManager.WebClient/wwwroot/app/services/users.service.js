@@ -11,45 +11,66 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-const authentication_service_1 = require("./authentication.service");
-const authenticated_http_service_1 = require("./authenticated-http.service");
-const RequestState_1 = require("../models/common/RequestState");
-const AuthException_1 = require("../models/exceptions/AuthException");
-class UsersService {
-    constructor(router, authService, httpService) {
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var authentication_service_1 = require("./authentication.service");
+var authenticated_http_service_1 = require("./authenticated-http.service");
+var RequestState_1 = require("../models/common/RequestState");
+var AuthException_1 = require("../models/exceptions/AuthException");
+var ValidationException_1 = require("../models/exceptions/ValidationException");
+var UsersService = (function () {
+    function UsersService(router, authService, httpService) {
         this.router = router;
         this.authService = authService;
         this.httpService = httpService;
     }
-    getLoggedUserProfile() {
-        let loginInfo = this.authService.getLoginInfo();
+    UsersService.prototype.getLoggedUserProfile = function () {
+        var _this = this;
+        var loginInfo = this.authService.getLoginInfo();
         if (loginInfo == null)
             throw new AuthException_1.AuthException(this.router.url, "Authentication error");
-        let userId = loginInfo.userId;
+        var userId = loginInfo.userId;
         return this.httpService
             .authorizedGet("api/Users/" + userId)
-            .then(requestResult => {
+            .then(function (requestResult) {
             switch (requestResult.state) {
                 case RequestState_1.RequestState.Success:
                     return requestResult.data;
                 case RequestState_1.RequestState.NotAuth:
-                    throw new AuthException_1.AuthException(this.router.url, "Authentication error");
+                    throw new AuthException_1.AuthException(_this.router.url, "Authentication error");
                 default:
                     throw requestResult.message;
             }
         });
-    }
-    addData(name, price) {
+    };
+    UsersService.prototype.editUserProfile = function (userProfile) {
+        var _this = this;
+        return this.httpService
+            .authorizedPost("api/Users/Edit", userProfile)
+            .then(function (requestResult) {
+            switch (requestResult.state) {
+                case RequestState_1.RequestState.Success:
+                    return true;
+                case RequestState_1.RequestState.Failed:
+                    var validationResults = requestResult.data;
+                    throw new ValidationException_1.ValidationException(validationResults);
+                case RequestState_1.RequestState.NotAuth:
+                    throw new AuthException_1.AuthException(_this.router.url, "Authentication error");
+                default:
+                    throw requestResult.message;
+            }
+        });
+    };
+    UsersService.prototype.addData = function (name, price) {
         //this.data.push(new Purchase(name, false, price));
-    }
-}
-UsersService = __decorate([
-    __param(0, core_1.Inject(router_1.Router)),
-    __param(1, core_1.Inject(authentication_service_1.AuthenticationService)),
-    __param(2, core_1.Inject(authenticated_http_service_1.AuthenticatedHttpService)), 
-    __metadata('design:paramtypes', [router_1.Router, authentication_service_1.AuthenticationService, authenticated_http_service_1.AuthenticatedHttpService])
-], UsersService);
+    };
+    UsersService = __decorate([
+        __param(0, core_1.Inject(router_1.Router)),
+        __param(1, core_1.Inject(authentication_service_1.AuthenticationService)),
+        __param(2, core_1.Inject(authenticated_http_service_1.AuthenticatedHttpService)), 
+        __metadata('design:paramtypes', [router_1.Router, authentication_service_1.AuthenticationService, authenticated_http_service_1.AuthenticatedHttpService])
+    ], UsersService);
+    return UsersService;
+}());
 exports.UsersService = UsersService;
 //# sourceMappingURL=users.service.js.map

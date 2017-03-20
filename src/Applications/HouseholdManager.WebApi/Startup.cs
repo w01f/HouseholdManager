@@ -2,7 +2,7 @@
 using HouseholdManager.Domain.Core.Repositories;
 using HouseholdManager.Infrastructure.Business.Services.Tasks;
 using HouseholdManager.Infrastructure.Business.Services.UserLogin;
-using HouseholdManager.Infrastructure.Business.Services.UserProfile;
+using HouseholdManager.Infrastructure.Business.Services.Users;
 using HouseholdManager.Infrastructure.Data;
 using HouseholdManager.Infrastructure.Data.Repositories;
 using HouseholdManager.WebApi.Common.Constants;
@@ -40,7 +40,7 @@ namespace HouseholdManager.WebApi
 
 			services.AddScoped(typeof(IRepository<>), typeof(CommonRepository<>));
 			services.AddTransient<IUserLoginService, UserLoginService>();
-			services.AddTransient<IUserProfileService, UserProfileService>();
+			services.AddTransient<IUsersService, UsersService>();
 			services.AddTransient<ITaskService, TaskService>();
 
 			services.AddAuthorization(auth =>

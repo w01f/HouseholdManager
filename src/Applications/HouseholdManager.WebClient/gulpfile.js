@@ -43,11 +43,6 @@ gulp.task('deploy:rxjs', function () {
         paths.nodeModulesSrc + 'rxjs/**/*.js'
 	]).pipe(gulp.dest(paths.nodeModulesDest + 'rxjs'));
 });
-gulp.task('deploy:angular-in-memory-web-api', function () {
-	gulp.src([
-        paths.nodeModulesSrc + 'angular-in-memory-web-api/**/*.js'
-	]).pipe(gulp.dest(paths.nodeModulesDest + 'angular-in-memory-web-api'));
-});
 gulp.task('deploy:angular', function () {
 	gulp.src([
         paths.nodeModulesSrc + '@angular/**/*.js'
@@ -60,7 +55,12 @@ gulp.task('deploy:jquery', function () {
 gulp.task('deploy:bootstrap', function () {
 	gulp.src([
 			paths.nodeModulesSrc + 'bootstrap/dist/**/*.js',
-			paths.nodeModulesSrc + 'bootstrap/dist/**/*.css'
+			paths.nodeModulesSrc + 'bootstrap/dist/**/*.css',
+			paths.nodeModulesSrc + 'bootstrap/dist/**/fonts/*.*',
+			paths.nodeModulesSrc + 'bootstrap-datepicker/dist/**/*.js',
+			paths.nodeModulesSrc + 'bootstrap-datepicker/dist/**/*.css',
+			paths.nodeModulesSrc + 'bootstrap-timepicker/**/*.js',
+			paths.nodeModulesSrc + 'bootstrap-timepicker/**/*.css'
 	])
 		.pipe(gulp.dest(paths.nodeModulesDest + 'bootstrap'));
 });
@@ -75,7 +75,6 @@ gulp.task('deploy-node-modules', [
     'deploy:reflect-metadata',
     'deploy:systemjs',
     'deploy:rxjs',
-    'deploy:angular-in-memory-web-api',
     'deploy:angular',
 	'deploy:jquery',
 	'deploy:bootstrap',

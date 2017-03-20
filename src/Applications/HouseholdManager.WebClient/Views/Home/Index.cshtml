@@ -6,19 +6,26 @@
 <main-page>Loading...</main-page>
 
 @section Scripts {
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
 	<environment names="Development">
+		<link rel="stylesheet" href="vendor/jquery-ui-1.12.1.custom/jquery-ui.css">
+		<link rel="stylesheet" href="vendor/jquery-ui-1.12.1.custom/jquery-ui.structure.css">
+		<link rel="stylesheet" href="vendor/jquery-ui-1.12.1.custom/jquery-ui.theme.css">
 		<link rel="stylesheet" href="nodes/bootstrap/css/bootstrap.css">
 		<link rel="stylesheet" href="css/site.css">
 		<script src="nodes/jquery/jquery.js"></script>
+		<script src="vendor/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 		<script src="nodes/bootstrap/js/bootstrap.js"></script>
-		<script src="nodes/ng2-bs3-modal/ng2-bs3-modal.js"></script>
 	</environment>
 	<environment names="Production">
+		<link rel="stylesheet" href="vendor/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<link rel="stylesheet" href="vendor/jquery-ui-1.12.1.custom/jquery-ui.structure.min.css">
+		<link rel="stylesheet" href="vendor/jquery-ui-1.12.1.custom/jquery-ui.theme.min.css">
 		<link rel="stylesheet" href="nodes/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/site.min.css">
 		<script src="nodes/jquery/jquery.min.js"></script>
+		<script src="vendor/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 		<script src="nodes/bootstrap/js/bootstrap.min.js"></script>
-		<script src="nodes/ng2-bs3-modal/ng2-bs3-modal.min.js"></script>
 	</environment>
 	<script src="nodes/core-js/core.min.js"></script>
 	<script src="nodes/reflect-metadata/Reflect.js"></script>
@@ -37,7 +44,5 @@
         .catch(function (err) {
         	console.error(err);
         });
-
-		System.import('app').catch(function (err) { console.error(err); });
 	</script>
 }

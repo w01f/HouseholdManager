@@ -2,8 +2,9 @@
 
 export class UserProfileViewModel {
 	public userId: number;
+	public email: string;
 	public firstName: string;
 	public lastName: string;
 	public gender: GenderType;
-	public birtday: Date;
+	public birthday: Date;
 }

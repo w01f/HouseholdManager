@@ -17,7 +17,7 @@ export class AuthenticatedHttpService {
 		@Inject('AppSettings') private appSettings: any
 	) { }
 
-	authorizedPost(url: string, body: any): Promise<RequestResult> {
+	public authorizedPost(url: string, body: any): Promise<RequestResult> {
 		let headers = this.initAuthHeaders();
 		return this.http.post(this.appSettings.servicesUrl + url, body, { headers: headers }).toPromise()
 			.then(response => {
@@ -27,7 +27,7 @@ export class AuthenticatedHttpService {
 			.catch(exception => { this.exceptionService.handleAppException(exception); });
 	}
 
-	authorizedGet(url): Promise<RequestResult> {
+	public authorizedGet(url): Promise<RequestResult> {
 		let headers = this.initAuthHeaders();
 		return this.http.get(this.appSettings.servicesUrl + url, { headers: headers }).toPromise()
 			.then(response => {

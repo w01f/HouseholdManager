@@ -1,8 +1,8 @@
 "use strict";
-const authentication_service_1 = require("./authentication.service");
-const authenticated_http_service_1 = require("./authenticated-http.service");
-const exception_service_1 = require("./exception.service");
-const alert_service_1 = require("./alert.service");
+var authentication_service_1 = require("./authentication.service");
+var authenticated_http_service_1 = require("./authenticated-http.service");
+var exception_service_1 = require("./exception.service");
+var alert_service_1 = require("./alert.service");
 exports.allServices = [
     authentication_service_1.AuthenticationService,
     authenticated_http_service_1.AuthenticatedHttpService,

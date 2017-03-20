@@ -1,13 +1,13 @@
 "use strict";
-const router_1 = require('@angular/router');
-const home_guard_1 = require("./helpers/guards/home.guard");
-const dashboard_guard_1 = require("./helpers/guards/dashboard.guard");
-const login_component_1 = require('./components/login/login.component');
-const home_component_1 = require('./components/home/home.component');
-const dashboard_component_1 = require('./components/dashboard/dashboard.component');
-const plans_component_1 = require('./components/plans/plans.component');
-const tasks_component_1 = require('./components/tasks/tasks.component');
-const appRoutes = [
+var router_1 = require('@angular/router');
+var home_guard_1 = require("./helpers/guards/home.guard");
+var dashboard_guard_1 = require("./helpers/guards/dashboard.guard");
+var login_component_1 = require('./components/login/login.component');
+var home_component_1 = require('./components/home/home.component');
+var dashboard_component_1 = require('./components/dashboard/dashboard.component');
+var plans_component_1 = require('./components/plans/plans.component');
+var tasks_component_1 = require('./components/tasks/tasks.component');
+var appRoutes = [
     {
         path: 'login',
         component: login_component_1.LoginComponent
