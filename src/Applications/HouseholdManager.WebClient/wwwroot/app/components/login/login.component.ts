@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 import { AlertService } from "../../services/alert.service";
 import { RequestState } from "../../models/common/RequestState";
-import { RequestResult } from "../../models/common/RequestResult";
 import { AuthRequest } from "../../models/auth/AuthRequest";
 
 @Component({

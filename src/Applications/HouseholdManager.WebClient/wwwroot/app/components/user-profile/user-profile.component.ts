@@ -1,5 +1,4 @@
 ﻿import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgModel } from '@angular/forms';
 import { UsersService } from "../../services/users.service";
 import { ExceptionService } from "../../services/exception.service";
 import { UserProfileViewModel } from "../../models/users/UserProfileViewModel";
@@ -56,9 +55,11 @@ export class UserProfileComponent implements IModalComponent, OnInit {
 		return this.dataService.editUserProfile(this.editedUserProfile)
 			.then(() => {
 				this.successCallback();
+				return true;
 			})
 			.catch(exception => {
 				this.errorCallback(exception);
+				return false;
 			});
 	}
 }

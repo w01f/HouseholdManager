@@ -5,7 +5,6 @@ import { Headers, Http } from "@angular/http";
 import { AuthenticationService } from "./authentication.service";
 import { ExceptionService } from "./exception.service";
 import { RequestResult } from "../models/common/RequestResult";
-import {RequestState} from "../models/common/RequestState";
 
 @Injectable()
 export class AuthenticatedHttpService {
@@ -27,7 +26,7 @@ export class AuthenticatedHttpService {
 			.catch(exception => { this.exceptionService.handleAppException(exception); });
 	}
 
-	public authorizedGet(url): Promise<RequestResult> {
+	public authorizedGet(url: any): Promise<RequestResult> {
 		let headers = this.initAuthHeaders();
 		return this.http.get(this.appSettings.servicesUrl + url, { headers: headers }).toPromise()
 			.then(response => {

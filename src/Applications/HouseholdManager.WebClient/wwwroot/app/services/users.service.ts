@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from "./authentication.service";
 import { AuthenticatedHttpService } from "./authenticated-http.service";
 import { RequestState } from "../models/common/RequestState";
-import { RequestResult } from "../models/common/RequestResult";
 import { ValidationResult } from "../models/common/ValidationResult";
 import { AuthException } from "../models/exceptions/AuthException";
 import { ValidationException } from "../models/exceptions/ValidationException";

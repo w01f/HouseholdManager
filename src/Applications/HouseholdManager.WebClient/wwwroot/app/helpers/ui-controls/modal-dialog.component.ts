@@ -1,20 +1,16 @@
-﻿import {
-	NgModule,
-	Component,
+﻿import { Component,
 	Compiler,
 	ViewContainerRef,
 	ViewChild,
-	Input,
 	Output,
 	ComponentRef,
-	ComponentFactory,
 	ComponentFactoryResolver,
 	ChangeDetectorRef,
 	OnInit,
 	Type,
 	EventEmitter
 } from '@angular/core';
-import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
+import { BsModalComponent } from 'ng2-bs3-modal';
 import { IModalComponent } from "../../models/common/IModalComponent";
 import { ExceptionService } from "../../services/exception.service";
 
@@ -25,8 +21,8 @@ import { ExceptionService } from "../../services/exception.service";
 })
 
 export class ModalDialogComponent implements OnInit {
-	@ViewChild('modalDialog') private modalDialog: ModalComponent;
-	@ViewChild('target', { read: ViewContainerRef }) target;
+	@ViewChild('modalDialog') private modalDialog: BsModalComponent;
+	@ViewChild('target', { read: ViewContainerRef }) target: any;
 
 	@Output() onClose: EventEmitter<any> = new EventEmitter();
 
@@ -56,7 +52,7 @@ export class ModalDialogComponent implements OnInit {
 		this.cmpRef.instance.successCallback = () => {
 			this.modalDialog.close();
 		}
-		this.cmpRef.instance.errorCallback = exception => {
+		this.cmpRef.instance.errorCallback = (exception: any) => {
 			let exceptionText = this.exceptionService.getExceptionMessage(exception);
 			this.dialogResult = { type: 'error', text: exceptionText };
 		}

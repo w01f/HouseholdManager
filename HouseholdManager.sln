@@ -1,28 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HouseholdManager.Domain.Core", "src\Domain\HouseholdManager.Domain.Core\HouseholdManager.Domain.Core.xproj", "{7A6592E5-D009-4BD0-B70F-F8FB18744DCD}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{5FD26A95-2B10-460E-8EE9-719FC6EF48C0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{CF1D53D7-9AC0-493B-9D87-1CB19800DCCA}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HouseholdManager.Infrastructure.Data", "src\Infrastructure\HouseholdManager.Infrastructure.Data\HouseholdManager.Infrastructure.Data.xproj", "{86C51F5C-B2B2-4169-8E29-ADD1F2878967}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3BBFAEC3-D29E-4682-9B9B-1270FBB082CE}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{A9212F96-50B0-4855-9595-94BAA8CBB3F2}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HouseholdManager.WebApi", "src\Applications\HouseholdManager.WebApi\HouseholdManager.WebApi.xproj", "{1766785D-B665-44F5-81ED-E8B7644B6EA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HouseholdManager.Domain.Core", "src\Domain\HouseholdManager.Domain.Core\HouseholdManager.Domain.Core.csproj", "{7A6592E5-D009-4BD0-B70F-F8FB18744DCD}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HouseholdManager.Infrastructure.Business", "src\Infrastructure\HouseholdManager.Infrastructure.Business\HouseholdManager.Infrastructure.Business.xproj", "{CAD38F52-83B8-449F-BE98-DE24A6DC47B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HouseholdManager.Infrastructure.Data", "src\Infrastructure\HouseholdManager.Infrastructure.Data\HouseholdManager.Infrastructure.Data.csproj", "{86C51F5C-B2B2-4169-8E29-ADD1F2878967}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HouseholdManager.WebClient", "src\Applications\HouseholdManager.WebClient\HouseholdManager.WebClient.xproj", "{050D0B1E-24AC-4263-BC96-654B7BDA2D8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HouseholdManager.WebApi", "src\Applications\HouseholdManager.WebApi\HouseholdManager.WebApi.csproj", "{1766785D-B665-44F5-81ED-E8B7644B6EA2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HouseholdManager.Infrastructure.Business", "src\Infrastructure\HouseholdManager.Infrastructure.Business\HouseholdManager.Infrastructure.Business.csproj", "{CAD38F52-83B8-449F-BE98-DE24A6DC47B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HouseholdManager.WebClient", "src\Applications\HouseholdManager.WebClient\HouseholdManager.WebClient.csproj", "{050D0B1E-24AC-4263-BC96-654B7BDA2D8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,5 +55,8 @@ Global
 		{1766785D-B665-44F5-81ED-E8B7644B6EA2} = {A9212F96-50B0-4855-9595-94BAA8CBB3F2}
 		{CAD38F52-83B8-449F-BE98-DE24A6DC47B9} = {CF1D53D7-9AC0-493B-9D87-1CB19800DCCA}
 		{050D0B1E-24AC-4263-BC96-654B7BDA2D8A} = {A9212F96-50B0-4855-9595-94BAA8CBB3F2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB41CF49-0EA1-45A6-9AE3-58A7DBDE675A}
 	EndGlobalSection
 EndGlobal

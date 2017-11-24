@@ -1,43 +1,43 @@
 ﻿using System;
 using HouseholdManager.WebApi.Common.Constants;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
 namespace HouseholdManager.WebApi.Common.Middleware
 {
 	static class ApiAuthenticationExtension
 	{
-		public static void UseApiAuthentication(this IApplicationBuilder app)
+		public static void AddJWTBearerAuthetication(this IServiceCollection services)
 		{
-			app.UseJwtBearerAuthentication(new JwtBearerOptions()
-			{
-				AuthenticationScheme = "Bearer",
-				AutomaticAuthenticate = true,
-				AutomaticChallenge = true,
-				TokenValidationParameters = new TokenValidationParameters
+			services
+				.AddAuthentication(options =>
 				{
-					IssuerSigningKey = AuthTokenOption.Key,
-					ValidAudience = AuthTokenOption.Audience,
-					ValidIssuer = AuthTokenOption.Issuer,
-					ValidateIssuerSigningKey = true,
-					ValidateLifetime = true,
-					ClockSkew = TimeSpan.FromMinutes(0)
-				},
-				Events = new JwtBearerEvents
+					options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+					options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+				})
+				.AddJwtBearer(options =>
 				{
-					OnAuthenticationFailed = context =>
+					options.TokenValidationParameters = new TokenValidationParameters
 					{
-						throw context.Exception;
-					},
-					OnChallenge = context =>
+						IssuerSigningKey = AuthTokenOption.Key,
+						ValidAudience = AuthTokenOption.Audience,
+						ValidIssuer = AuthTokenOption.Issuer,
+						ValidateIssuerSigningKey = true,
+						ValidateLifetime = true,
+						ClockSkew = TimeSpan.FromMinutes(0)
+					};
+					options.Events = new JwtBearerEvents
 					{
-						if (context.AuthenticateFailure != null)
-							throw context.AuthenticateFailure;
-						throw new SecurityTokenException(context.Error ?? "Authentification failed");
-					}
-				}
-			});
+						OnAuthenticationFailed = context => throw context.Exception,
+						OnChallenge = context =>
+						{
+							if (context.AuthenticateFailure != null)
+								throw context.AuthenticateFailure;
+							throw new SecurityTokenException(context.Error ?? "Authentification failed");
+						}
+					};
+				});
 		}
 	}
 }

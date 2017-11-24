@@ -2,7 +2,6 @@
 import { Router } from '@angular/router';
 import { AuthenticatedHttpService } from "./authenticated-http.service";
 import { RequestState } from "../models/common/RequestState";
-import { RequestResult } from "../models/common/RequestResult";
 import { Task } from "../models/tasks/Task";
 import { AuthException } from "../models/exceptions/AuthException";
 

@@ -1,5 +1,4 @@
-﻿using HouseholdManager.Domain.Core.Entities.Admin;
-using HouseholdManager.Domain.Core.Repositories;
+﻿using HouseholdManager.Domain.Core.Repositories;
 using HouseholdManager.Infrastructure.Business.Services.Tasks;
 using HouseholdManager.Infrastructure.Business.Services.UserLogin;
 using HouseholdManager.Infrastructure.Business.Services.Users;
@@ -43,6 +42,8 @@ namespace HouseholdManager.WebApi
 			services.AddTransient<IUsersService, UsersService>();
 			services.AddTransient<ITaskService, TaskService>();
 
+			services.AddJWTBearerAuthetication();
+
 			services.AddAuthorization(auth =>
 			{
 				auth.AddPolicy(GlobalConstants.AuthenticationPolicyName, new AuthorizationPolicyBuilder()
@@ -78,7 +79,6 @@ namespace HouseholdManager.WebApi
 				app.UseCors(GlobalConstants.CosrPolicyName);
 
 			app.UseApiExceptionHandler();
-			app.UseApiAuthentication();
 
 			app.EnsureMigrationOfContext<DataContext>();
 

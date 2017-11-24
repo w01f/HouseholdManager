@@ -1,12 +1,10 @@
 ﻿import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ExceptionSourceType } from "../models/exceptions/ExceptionSourceType";
 import { AuthException } from "../models/exceptions/AuthException";
 import { ValidationException } from "../models/exceptions/ValidationException";
 import { RequestResult } from "../models/common/RequestResult";
 import { RequestState } from "../models/common/RequestState";
 import { AlertService } from "./alert.service";
-import { ValidationResult } from "../models/common/ValidationResult";
 
 @Injectable()
 export class ExceptionService {
@@ -22,7 +20,7 @@ export class ExceptionService {
 			return authException.message;
 		} else if (exception instanceof ValidationException) {
 			let valException = exception as ValidationException;
-			let validationText = [];
+			let validationText: any[] = [];
 			valException.validationResults.forEach(validationResult => {
 				validationText.push(validationResult.errorMessage);
 			});

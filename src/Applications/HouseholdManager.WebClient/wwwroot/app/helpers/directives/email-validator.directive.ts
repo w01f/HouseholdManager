@@ -1,4 +1,4 @@
-﻿import { Directive, Input, forwardRef, OnInit } from '@angular/core';
+﻿import { Directive, forwardRef, OnInit } from '@angular/core';
 import { NG_VALIDATORS, Validator, ValidatorFn, AbstractControl } from '@angular/forms';
 
 import { EmailValidator } from '../validators/email-validator';

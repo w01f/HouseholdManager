@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
-import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
-
 import { AppComponent } from './components/app/app.component';
 import { routing } from './app.routing';
+
+import { BsModalModule } from 'ng2-bs3-modal';
 
 import { allComponents } from "./components/_components-index";
 import { allDynamicComponents } from "./components/_dynamic-components-index";
@@ -22,7 +22,7 @@ import { allGuards } from "./helpers/guards/_guards-index";
 		FormsModule,
 		routing,
 
-		Ng2Bs3ModalModule
+		BsModalModule
 	],
 	declarations: [
 		allComponents,

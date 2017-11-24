@@ -65,7 +65,7 @@ gulp.task('deploy:bootstrap', function () {
 		.pipe(gulp.dest(paths.nodeModulesDest + 'bootstrap'));
 });
 gulp.task('deploy:ng2-bs3-modal', function () {
-	gulp.src([paths.nodeModulesSrc + 'ng2-bs3-modal/bundles/**/*.js'])
+	gulp.src([paths.nodeModulesSrc + 'ng2-bs3-modal/**/*.js'])
 		.pipe(gulp.dest(paths.nodeModulesDest + 'ng2-bs3-modal'));
 });
 

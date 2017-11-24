@@ -1,6 +1,6 @@
 ﻿import "rxjs/add/operator/toPromise";
 import { Injectable, Inject } from '@angular/core';
-import { Http, Headers } from "@angular/http";
+import { Http } from "@angular/http";
 import { ExceptionService } from "./exception.service";
 import { RequestState } from "../models/common/RequestState";
 import { RequestResult } from "../models/common/RequestResult";
